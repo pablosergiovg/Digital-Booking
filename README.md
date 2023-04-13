@@ -1,9 +1,13 @@
-# dbooking
-## _Proyecto Integrador - Digital House_
+# Digital Booking
+## Proyecto Integrador - Digital House
 
-[Link al proyecto](http://digitalbooking.ddns.net/)
+<a href="http://digitalbooking.ddns.net/" target="_blank">
+  <img src="https://img.shields.io/badge/ver demo-%231DA1F2.svg?&style=for-the-badge&logo=Pdf&logoColor=white&color=071A2C" alt="Gmail"/>
+</a>
 
-* Nombre del proyecto: Digital Booking
+<br>
+<br>
+
 * Resumen general del proyecto: Proyecto integrador de la carrera Certified Tech Developer. Se desarrolló una aplicación completa para reservas de hospedajes. Los usuarios que utilicen Digital Booking tienen a disposición un catálogo con distintas categorías de hospedajes (hoteles, hostels, bed and breakfast, departamentos), donde pueden seleccionar el que se ajuste a su preferencia. Desde la página de inicio pueden filtrar por categoría, ciudad o fecha. Cada hospedaje cuenta con un detalle del mismo, imágenes, fechas disponibles, ubicación, servicios, etc. Al registrarse, el usuario puede realizar reservas y guardar en favoritos los lugares que prefiera. 
 Por otro lado, los administradores tienen la opción de añadir nuevos hospedajes. 
 
