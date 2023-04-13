@@ -1,0 +1,86 @@
+
+variables:
+  S3_BUCKET_NAME: digitalbooking.ddns.net
+  EC2_INSTANCE_IP: 3.141.200.56
+# Etapas del pipeline
+stages:
+  - build
+  - test
+  - deploy
+
+# Etapa de construcción del backend
+build-back:  
+  stage: build
+  image: maven:3.9.0-amazoncorretto-19
+  script:
+    - cd ProyectoIntegrador
+    - mvn clean install -DskipTests
+  only:
+    - desarrollo
+
+# Etapa de construcción del frontend
+build-front:      
+  stage: build
+  image: node:latest
+  script:
+    - cd Frontend/Front\ PI
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+  only:
+    - desarrollo
+
+# Etapa de pruebas del front
+test-front:   
+  stage: test  
+  image: node:latest 
+  script:
+    - cd Frontend/Front\ PI
+    - npm install
+    - npm test
+  only:
+    - desarrollo
+
+# Etapa de despliegue del backend y frontend
+deploy-back:
+  stage: deploy
+  image: maven:3.9.0-amazoncorretto-19
+  before_script:
+    - yum update -y
+    - yum install -y openssh-clients
+    - eval $(ssh-agent -s)
+    - echo "$EC2_SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -H $EC2_INSTANCE_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+  script:
+    # Desplegar el backend en EC2
+    - cd ProyectoIntegrador
+    - mvn clean package -DskipTests
+    - scp target/*.jar ubuntu@$EC2_INSTANCE_IP:/home/ubuntu/*.jar
+    - ssh -o StrictHostKeyChecking=no ubuntu@$EC2_INSTANCE_IP 'pkill -9 java|| echo "No hay java corriendo"'
+    - ssh -o StrictHostKeyChecking=no ubuntu@$EC2_INSTANCE_IP "nohup java -jar /home/ubuntu/*.jar > /dev/null 2>&1 &"
+  only:
+    - desarrollo
+
+deploy-front:
+  stage: deploy
+  image: node:latest
+  script:
+    # Desplegar el frontend en S3
+    - apt-get update && apt-get install -y python3-pip
+    - pip3 install awscli
+    - cd Frontend/Front\ PI
+    - npm install
+    - npm run build && cd dist
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region us-east-2
+    - aws s3 sync . s3://$S3_BUCKET_NAME --delete 
+  only:
+    - desarrollo

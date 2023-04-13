@@ -1,0 +1,2027 @@
+{
+	"info": {
+		"_postman_id": "baaebe20-c89d-4500-a7b4-674ba7f17bc2",
+		"name": "ProyectoFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14517212"
+	},
+	"item": [
+		{
+			"name": "APIS",
+			"item": [
+				{
+					"name": "Categorias",
+					"item": [
+						{
+							"name": "Guardar Categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Cabaña\",\r\n    \"descripcion\": \"Cabañas\",\r\n    \"urlimagen\": \"imagenCabaña.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiCategorias}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCategorias}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar una Categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include('\"id\":3');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiCategorias}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCategorias}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se actualizó la categoria con id:\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"titulo\": \"Hotel\",\r\n    \"descripcion\": \"Hotelito\",\r\n    \"urlimagen\": \"Hotelote.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiCategorias}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCategorias}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se eliminó la categoria con id: \");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiCategorias}}/14",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCategorias}}",
+										"14"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las categorias",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCategorias}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCategorias}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ciudades",
+					"item": [
+						{
+							"name": "Guardar Ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Ciudad\",\r\n    \"provincia\": \"Provincia\",\r\n    \"pais\": \"Pais\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiCiudades}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCiudades}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar una Ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include('\"id\":3');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiCiudades}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCiudades}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se actualizó la categoria con id:\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"nombre\": \"Viena\",\r\n    \"provincia\": \"prov\",\r\n    \"pais\": \"Austria\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiCiudades}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCiudades}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se eliminó la categoria con id: \");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiCiudades}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCiudades}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las ciudades",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCiudades}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCiudades}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Caracteristicas",
+					"item": [
+						{
+							"name": "Guardar Caracteristicas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Wifi\",\r\n    \"icono\": \"iconito.jpg\",\r\n    \"urlimagen\": \"imagen.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiCaracteristicas}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCaracteristicas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar una Caracteristicas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include('\"id\":3');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiCaracteristicas}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCaracteristicas}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Caracteristicas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se actualizó la categoria con id:\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"nombre\": \"Piscina\",\r\n    \"icono\": \"pileta\",\r\n    \"urlimagen\": \"pelopincho.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiCaracteristicas}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCaracteristicas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Caracteristicas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se eliminó la categoria con id: \");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCaracteristicas}}/21",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCaracteristicas}}",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las caracteristicas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCaracteristicas}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCaracteristicas}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Politicas",
+					"item": [
+						{
+							"name": "Guardar Politica",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Norma\",\r\n    \"detalle\": \"Checkout a las 10:30AM\"    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiPoliticas}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiPoliticas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar una Politica",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include('\"id\":3');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiPoliticas}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiPoliticas}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Politica",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se actualizó la categoria con id:\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"titulo\": \"Salud y Seguridad\",\r\n    \"detalle\": \"Detectores de humo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiPoliticas}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiPoliticas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Politica",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se eliminó la categoria con id: \");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiPoliticas}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiPoliticas}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las politicas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiPoliticas}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiPoliticas}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Imagenes",
+					"item": [
+						{
+							"name": "Guardar Imagen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Imagen\",\r\n    \"urlImagen\": \"imagenes.jpg\",\r\n    \"productoId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiImagenes}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiImagenes}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar una Imagen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include('\"id\":3');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiImagenes}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiImagenes}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Imagen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se actualizó la categoria con id:\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"titulo\": \"Prueba\",\r\n    \"urlImagen\": \"Pruebita\",\r\n    \"producto\": {\"id\":1}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiImagenes}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiImagenes}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Imagen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se eliminó la categoria con id: \");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiImagenes}}/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiImagenes}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las imagenes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiImagenes}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiImagenes}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Productos",
+					"item": [
+						{
+							"name": "Guardar Producto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Producto 1\",\r\n    \"descripcion\": \"Prueba\",\r\n    \"latitud\": 0.4214,\r\n    \"longitud\": 0.239043,\r\n    \"categoria\": {\r\n        \"titulo\": \"Cabaña\",\r\n        \"descripcion\": \"Cabañas\",\r\n        \"urlImagen\": \"imagenCabaña.jpg\"\r\n    },\r\n    \"ciudad\": {\r\n        \"nombre\": \"Ciudad\",\r\n        \"provincia\": \"Provincia\",\r\n        \"pais\": \"Pais\"\r\n    },\r\n    \"politicas\": [{\r\n        \"titulo\": \"Norma\",\r\n        \"detalle\": \"Checkout a las 10:30AM\" \r\n        }],\r\n    \"imagenes\": [{\r\n        \"titulo\": \"Imagen\",\r\n    \"urlImagen\": \"imagenes.jpg\"\r\n    }],\r\n    \"caracteristicas\": [{\r\n        \"nombre\": \"Wifi\",\r\n        \"icono\": \"iconito.jpg\",\r\n        \"urlimagen\": \"imagen.jpg\"\r\n    },\r\n    {\r\n           \"nombre\": \"Pileta\",\r\n            \"icono\": \"piscina.jpg\",\r\n            \"urlimagen\": \"pelopincho.jpg\"\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiProductos}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar un Producto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include('\"id\":3');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiProductos}}/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Producto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se actualizó la categoria con id:\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"titulo\": \"Prueba\",\r\n    \"descripcion\": \"Pruebita\",\r\n    \"categoriaId\": 1,\r\n    \"ciudadId\": 2,\r\n    \"politicas\": [],\r\n    \"caracteristicas\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiProductos}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Producto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Se eliminó la categoria con id: \");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiProductos}}/1196",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}",
+										"1196"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todos los productos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiProductos}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Producto Random",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/api/productos/random",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"productos",
+										"random"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Usuarios",
+					"item": [
+						{
+							"name": "Buscar Usuario por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/{{apiUsuarios}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiUsuarios}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Usuario por Eemail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiUsuarios}}/datos/pepe@digitalbooking.com",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiUsuarios}}",
+										"datos",
+										"pepe@digitalbooking.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todos los Usuarios",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiUsuarios}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiUsuarios}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar nuevo Usuario",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Pablo\",\r\n    \"apellido\": \"Laurito\",\r\n    \"email\": \"pablo@digitalbooking.com\",    \r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/usuarios",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reservas",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiReservas}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiReservas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyQGRpZ2l0YWxib29raW5nLmNvbSIsImV4cCI6MTY3OTkzNzg0OCwiaWF0IjoxNjc5OTM3Nzg3fQ.g11ChMRY-wzrOIV67j60c7meGc9KuC_lpJaTFCq0nMM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaInicial\": \"2023-08-05\",\r\n    \"fechaFinal\": \"2023-08-15\",\r\n    \"horaInicio\": \"20:30:10.15\",\r\n    \"productoId\": 30,\r\n    \"usuarioId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/reservas",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reservas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Reserva Por Id Producto",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/api/reservas/producto/100",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reservas",
+										"producto",
+										"100"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar Reserva",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiReservas}}/4",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiReservas}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testing",
+					"item": [
+						{
+							"name": "Listar todas las categorias Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"descripcion\": {\"type\": \"string\"},\r",
+											"    \"urlimagen\": {\"type\": \"string\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen las 4 categorias\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Hotel\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Departamento\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Hostel\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Bed and breakfast\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCategorias}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCategorias}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las ciudades Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"nombre\": {\"type\": \"string\"},\r",
+											"    \"provincia\": {\"type\": \"string\"},\r",
+											"    \"pais\": {\"type\": \"string\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen ciudades de los 2 paises\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Uruguay\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Argentina\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCiudades}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCiudades}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las caracteristicas Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"nombre\": {\"type\": \"string\"},\r",
+											"    \"icono\": {\"type\": \"string\"},    \r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen caracteristicas pedidas\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"WiFi\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Cocina\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Restaurante\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Desayuno\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiCaracteristicas}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiCaracteristicas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las politicas Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"detalle\": {\"type\": \"string\"},    \r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen los 3 tipos de politicas\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Norma\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Salud y Seguridad\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Política de cancelación\");    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiPoliticas}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiPoliticas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las imagenes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"urlImagen\": {\"type\": \"string\"},\r",
+											"    \"productoId\": {\"type\": \"number\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen distintos tipos de imagenes\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"pxpics\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"imgBedroom\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"imgix\");    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiImagenes}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiImagenes}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todos los productos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"descripcion\": {\"type\": \"string\"},\r",
+											"    \"latitud\": {\"type\": \"number\"},\r",
+											"    \"longitud\": {\"type\": \"number\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen distintos productos con sus caracteristicas\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Hotel Sunset Beach\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Estacionamiento gratuito\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Cocina\");    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiProductos}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Producto Random",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"descripcion\": {\"type\": \"string\"},\r",
+											"    \"latitud\": {\"type\": \"number\"},\r",
+											"    \"longitud\": {\"type\": \"number\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen distintos productos con sus caracteristicas\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"latitud\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"descripcion\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"ciudad\");    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiProductos}}/random",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}",
+										"random"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Productos por Producto y Fecha",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/{{apiProductos}}/fechaCiudad?fechaInicio=2023-04-05&fechaFinal=2023-05-13&idCiudad=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiProductos}}",
+										"fechaCiudad"
+									],
+									"query": [
+										{
+											"key": "fechaInicio",
+											"value": "2023-04-05"
+										},
+										{
+											"key": "fechaFinal",
+											"value": "2023-05-13"
+										},
+										{
+											"key": "idCiudad",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todas las reservas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"descripcion\": {\"type\": \"string\"},\r",
+											"    \"latitud\": {\"type\": \"number\"},\r",
+											"    \"longitud\": {\"type\": \"number\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen las reservas con sus caracteristicas\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"2023\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"fechaInicial\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"productoId\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"usuarioId\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiReservas}}",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiReservas}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar reserva por IdProducto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var schema = {\r",
+											"    \"id\": {\"type\": \"number\"},\r",
+											"    \"titulo\": {\"type\": \"string\"},\r",
+											"    \"descripcion\": {\"type\": \"string\"},\r",
+											"    \"latitud\": {\"type\": \"number\"},\r",
+											"    \"longitud\": {\"type\": \"number\"}\r",
+											"};\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('El esquema de la respuesta es el correcto', function () {\r",
+											"    pm.expect(tv4.validate(jsonData[0], schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Se traen las reservas con sus caracteristicas\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"2023\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"fechaInicial\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"productoId\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"usuarioId\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "3.141.200.56:8080/{{apiReservas}}/producto/1",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"{{apiReservas}}",
+										"producto",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"admin@digitalbooking.com\",\r\n    \"password\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "3.141.200.56:8080/authenticate",
+									"host": [
+										"3",
+										"141",
+										"200",
+										"56"
+									],
+									"port": "8080",
+									"path": [
+										"authenticate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyQGRpZ2l0YWxib29raW5nLmNvbSIsImV4cCI6MTY3OTUwMTc5MywiaWF0IjoxNjc5NDQxNzMzfQ.7yU0vKIOHwadGNM-NOk615olpUJWEESLLMcZ3wN3FHA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/todos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
